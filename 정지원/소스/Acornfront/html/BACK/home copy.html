@@ -1,0 +1,713 @@
+<!-- home.html -->
+<link rel="stylesheet" href="./css/home.css">
+<style>
+  .home_menu {
+    padding: 0;
+  }
+
+  .home_menu ul {
+    display: flex;
+    gap: 20px;
+  }
+
+  .home_menu ul li {
+    list-style: none;
+  }
+
+  .home_menu_li {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f1f1f1;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .home_menu_li::before {
+    content: '';
+    display: none;
+    margin-right: 8px;
+  }
+
+  .home_menu_li.active {
+    background-color: #000;
+    color: #fff;
+  }
+
+  .home_menu_li.active::before {
+    display: inline-block;
+    content: attr(data-icon);
+  }
+
+  .movie_sub_first_menu {
+    display: flex;
+    position: relative;
+  }
+
+  .movie_sub_first_menu_front {
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .movie_sub_first_menu_back {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    right: 0;
+  }
+
+  .movie_sub_first_menu_front li,
+  .movie_sub_first_menu_back li {
+    list-style: none;
+  }
+
+  .underline-middle {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .underline-middle::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0%;
+    transform: translateX(-50%);
+    border-bottom: 2px solid black;
+    transition: width 1s ease;
+  }
+
+  .underline-middle.active::after {
+    width: 100%;
+  }
+
+  .movie_grid{
+    padding-top: 30px;
+  }
+
+  .movie_grid_main {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .movie_slider {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 20px;
+  }
+
+  .movie_card {
+    flex: 0 0 200px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .movie_card img {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .movie_grid_next,
+  .next_grid_prev {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  .movie_grid_next {
+    right: 0;
+  }
+
+  .next_grid_prev {
+    left: 0;
+  }
+
+  .movie_card p strong {
+    font-size: 10px;
+    margin: 0;
+  }
+
+  .movie_card p {
+    font-size: 10px;
+    margin: 0;
+  }
+
+  .movie_chart{
+    background-color: #f5f5f5;
+
+  }
+</style>
+
+<section class="home_page">
+  <div class="home_menu">
+    <ul>
+      <li><div class="home_menu_li active" data-icon="🎬">영화</div></li>
+      <li><div class="home_menu_li" data-icon="🎉">이벤트/혜택</div></li>
+      <li><div class="home_menu_li" data-icon="🏃‍♂️">엑티비티</div></li>
+    </ul>
+  </div>
+
+  <div class="movie_sub">
+    <div class="movie_sub_first">
+      <div class="movie_sub_first_menu">
+        <ul class="movie_sub_first_menu_front">
+          <li><div class="movie_sub_first_menu_front_li underline-middle active">무비차트</div></li>
+          <li><div class="movie_sub_first_menu_front_li underline-middle">현재상영작</div></li>
+          <li><div class="movie_sub_first_menu_front_li underline-middle">상영예정</div></li>
+          <li><div class="movie_sub_first_menu_front_li underline-middle">ICECON</div></li>
+          <li><div class="movie_sub_first_menu_front_li underline-middle">아트하우스</div></li>
+          <li><div class="movie_sub_first_menu_front_li underline-middle">CGV Only</div></li>
+        </ul>
+
+        <ul class="movie_sub_first_menu_back">
+          <li><a href="#">전체보기
+            <svg width="14" height="14" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 4.57812L16 12.5781L8 20.5781" stroke="#707070" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a></li>
+        </ul>
+      </div>
+
+      <div class="movie_chart">
+        <!--무비 그리드-->
+        <div class="movie_grid">
+          <div class="movie_grid_main"></div>
+        </div>
+<style>
+  .search_wrap p{
+    font-size: 20px;
+    display: inline;
+  }
+
+  .search_wrap p a{
+    color: black;
+    text-decoration: none;
+  }
+
+  .search_wrap input{
+    border: none;
+    width: 470px;
+    height: 50px;
+  }
+  .search_button{
+    background-image: url("./images/home/돋보기.png");
+    background-size: cover;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+  }
+  .search_wrap_input{
+    display: flex;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 0;
+    margin: 0;
+    width: 500px;
+  }
+
+  .short_cut{
+
+  }
+
+  .short_cut ul{
+    padding: 0;
+    display: flex;
+    gap:20px
+  }
+
+  .short_cut li{
+    list-style: none;
+    border: 1px solid #ccc;
+    border-radius: 120px;
+    padding: 20px;
+  }
+  .short_cut li:nth-child(1) {
+    background-color: yellow;
+  }
+  .short_cut li:nth-child(1)::before {
+    content: "🍿";
+    border-radius: 100%;
+    background-color: white;
+    padding: 10px;
+    margin-right: 6px;
+  }
+
+  .short_cut li:nth-child(2) {
+    background-color: pink;
+
+  }
+
+  .short_cut li:nth-child(3) {
+    background-color: pink;
+  }
+  .short_cut li:nth-child(3)::before {
+    content: "🎁";
+    border-radius: 100%;
+    background-color: white;
+    padding: 10px;
+    margin-right: 6px;
+  }
+.anything_search{
+  width: 700px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.photo_banner {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #fca3aa, #fdbbbb);
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 15px;
+  width: 760px;
+  height: 150px;
+  box-sizing: border-box;
+}
+
+.photo_text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+}
+
+.photo_text .small_text {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+}
+
+.photo_text .main_text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+}
+
+.photo_text button {
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
+  border: 1px solid #333;
+  background-color: white;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.photo_banner img {
+  height: 200px;
+  width: 200px;
+}
+
+.liberation-card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  
+  max-width: 700px;
+  margin: 30px auto 0 auto; /* 위쪽 30px 마진 추가 */
+  font-family: sans-serif;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.liberation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.liberation-title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.liberation-title::before {
+    content: "";
+    display: inline-block;
+    background-image: url("./images/home/ad_b.png");
+    background-size: cover;
+    background-position: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+.liberation-badge {
+  font-size: 12px;
+  color: gray;
+  border: 1px solid #ccc;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+.liberation-quote {
+  font-size: 15px;
+  margin: 10px 0;
+}
+
+.liberation-desc {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+
+
+.liberation-image img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+
+.liberation-footer {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.footer-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.footer-text {
+  flex: 1;
+  font-size: 13px;
+}
+
+.footer-arrow {
+  font-size: 20px;
+  color: #aaa;
+}
+
+
+</style>
+        <div class="anything_search">
+          <div class="search_wrap">
+            <p><a href="#"> 찾고계신가요? &#10095;</a></p>
+            <div class="search_wrap_input">
+              <input type="text" placeholder="찾으시는 영화, 서비스를 입력해주세요.">
+              <div class="search_button"></div>
+            </div>
+          </div>
+
+          <div class="short_cut">
+            <ul>
+              <li>팝콘주문</li>
+              <li>vip라운지</li>
+              <li>경품이벤트</li>
+            </ul>
+          </div>
+        </div>
+        <!--포토카드 ad-->
+        <div class="photo_banner">
+          <div class="photo_text">
+            <p class="small_text">이제 누구나! 영화를 안봐도</p>
+            <p class="main_text">포토플레이 출력 가능!</p>
+            <button>바로가기</button>
+          </div>
+          <img src="./images/home/character.png" alt="포토플레이 캐릭터">
+        </div>
+        <!--빙그래 ad-->
+        <div class="liberation-card">
+          <div class="liberation-header">
+            <p class="liberation-title">처음 듣는 광복</p>
+            <span class="liberation-badge">AD</span>
+          </div>
+
+          <p class="liberation-quote">“그 함성소리가 천둥번개 치는 소리보다 더 했대요”</p>
+
+          <p class="liberation-desc">
+            눈으로만 기억하던 80년 전 광복의 날.<br>
+            빙그레가 광복 당시의 역사 자료와 증언을 토대로<br>
+            그날의 소리를 구현했습니다.<br><br>
+            독립운동가들이 그토록 듣고 싶어했던 “대한독립만세”,<br>
+            CGV에서 다시 울립니다.
+          </p>
+
+          <div class="liberation-image">
+            <img src="./images/home/ad_L.png" alt="처음 듣는 광복 포스터">
+          </div>
+
+          <div class="liberation-footer">
+            <img class="footer-icon" src="./images/home/ad_S.png" alt="예매하러가기">
+            <div class="footer-text">
+              <strong>예매하러 가기</strong><br>
+              가장 가까운 상영관을 찾아보세요
+            </div>
+            <div class="footer-arrow">❯</div>
+          </div>
+        </div>
+
+        <!--ICECON-->
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <p>이벤트/혜택</p>
+  </div>
+
+  <div class="activity">
+    <p>activity</p>
+  </div>
+</section>
+
+<script src="./js/home.js"></script>
+<script>
+  const movie_list = [
+    {
+      "type": "ad",
+      "title": "CGV 관람권 쿠폰 받자!",
+      "subTitle": "결제내역 확인하고",
+      "description": "CGV 관람권 받기",
+      "buttonText": "자세히 보기",
+      "image": "main_ad.webp"
+    },
+    {
+      "type": "movie",
+      "rank": 1,
+      "title": "극장판 귀멸의 칼날: 무한성편",
+      "grade": "15",
+      "reservationRate": "29.2%",
+      "releaseDate": "2025.08.22",
+      "buttonText": "예매하기",
+      "image": "귀멸의 칼날.jpg"
+    },
+    {
+      "type": "movie",
+      "rank": 2,
+      "title": "좀비딸",
+      "grade": "12",
+      "score": "92%",
+      "reservationRate": "18.9%",
+      "totalAudience": "222.3만",
+      "buttonText": "예매하기",
+      "image": "좀비딸.jpg"
+    },
+    {
+      "type": "ad",
+      "title": "죽은 자를 부르는 강령숲",
+      "subTitle": "울여름 함께하지 않을래?",
+      "releaseDate": "2025.08.06",
+      "buttonText": "자세히 보기",
+      "image": "강령.webp"
+    },
+    {
+      "type": "movie",
+      "rank": 3,
+      "title": "F1 더 무비",
+      "grade": "12",
+      "score": "99%",
+      "reservationRate": "11.6%",
+      "totalAudience": "322만",
+      "buttonText": "예매하기",
+      "image": "F1.jpg"
+    },
+    {
+      "type": "concert",
+      "title": "요루시카 라이브 2024 [전생]",
+      "ICECON": true,
+      "grade": "전체관람가",
+      "date": "2025.09.10",
+      "venue": "올림픽 체조경기장",
+      "buttonText": "예매하기",
+      "image": "요루시카.jpg"
+    },
+    {
+    "type": "concert",
+    "title": "[씨네뮤지엄] 오르세 미술관",
+    "ICECON": true,
+    "grade": "전체관람가",
+    "date": "2025.09.01",
+    "venue": "CGV 아트하우스",
+    "buttonText": "상세보기",
+    "image": "오르세.jpg"
+  },
+  {
+    "type": "concert",
+    "title": "[씨네뮤지엄] 나는 이렇게 기억되고 싶다, 렘브란트",
+    "ICECON": true,
+    "grade": "15",
+    "date": "2025.09.01",
+    "venue": "CGV ICECON관",
+    "buttonText": "상세보기",
+    "image": "렘브란트.jpg"
+  },
+  {
+    "type": "concert",
+    "title": "뮤지컬 라파치니의 정원",
+    "ICECON": true,
+    "grade": "12",
+    "date": "2025.09.01",
+    "venue": "CGV 뮤지컬관",
+    "buttonText": "상세보기",
+    "image": "라파치니.jpg"
+  }
+  ];
+
+  let currentSlide = 0;
+  const cardsPerView = 1;
+
+  const tabs = document.querySelectorAll('.home_menu_li');
+  const movieSection = document.querySelector('.movie_sub');
+  const eventSection = document.querySelector('.event');
+  const activitySection = document.querySelector('.activity');
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      movieSection.style.display = 'none';
+      eventSection.style.display = 'none';
+      activitySection.style.display = 'none';
+
+      if (index === 0) movieSection.style.display = 'block';
+      if (index === 1) eventSection.style.display = 'block';
+      if (index === 2) activitySection.style.display = 'block';
+    });
+  });
+
+  movieSection.style.display = 'block';
+  eventSection.style.display = 'none';
+  activitySection.style.display = 'none';
+
+  const movie_sub_first_menu_front_li = document.querySelectorAll('.movie_sub_first_menu_front_li');
+  movie_sub_first_menu_front_li.forEach((element, index) => {
+    element.addEventListener('click', () => {
+      movie_sub_first_menu_front_li.forEach(t => t.classList.remove('active'));
+      element.classList.add('active');
+
+      if (index === 0) mainMovieChart();
+      if (index === 1) test();
+    });
+  });
+
+  function mainMovieChart() {
+    currentSlide = 0;
+    const movieGridMain = document.querySelector('.movie_grid_main');
+    movieGridMain.innerHTML = `
+      <div class="next_grid_prev">&#10094;</div>
+      <div class="movie_slider"></div>
+      <div class="movie_grid_next">&#10095;</div>
+    `;
+
+    const movieSlider = movieGridMain.querySelector('.movie_slider');
+
+    movie_list.forEach(movie => {
+      const card = document.createElement('div');
+      card.className = 'movie_card';
+
+      if (movie.type === "movie") {
+        card.innerHTML = `
+          <img src="./images/home/${movie.image}" alt="${movie.title}">
+          <p><strong>${movie.rank}. ${movie.title}</strong></p>
+          <p>예매율: ${movie.reservationRate}</p>
+          <p>관람등급: ${movie.grade}</p>
+          <button>${movie.buttonText}</button>
+        `;
+      } else if (movie.type === "ad") {
+        card.innerHTML = `
+          <img src="./images/home/${movie.image}" alt="${movie.title}">
+          <p><strong>${movie.title}</strong></p>
+          <p>${movie.subTitle ?? ""}</p>
+          <p>${movie.description ?? ""}</p>
+          <button>${movie.buttonText}</button>
+        `;
+      } else if (movie.type === "concert") {
+        card.innerHTML = `
+          <img src="./images/home/${movie.image}" alt="${movie.title}">
+          <p><strong>${movie.title}</strong></p>
+          <p>날짜: ${movie.date}</p>
+          <p>장소: ${movie.venue}</p>
+          <button>${movie.buttonText}</button>
+        `;
+      }
+
+      movieSlider.appendChild(card);
+    });
+
+    const prevBtn = movieGridMain.querySelector('.next_grid_prev');
+    const nextBtn = movieGridMain.querySelector('.movie_grid_next');
+
+    prevBtn.addEventListener('click', () => {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlider(movieSlider);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const maxSlide = movie_list.length - 3;
+      if (currentSlide < maxSlide) {
+        currentSlide++;
+        updateSlider(movieSlider);
+      }
+    });
+
+    updateSlider(movieSlider);
+  }
+
+  function test() {
+    const movieGridMain = document.querySelector('.movie_grid_main');
+    movieGridMain.innerHTML = '';
+
+    const placeholder = document.createElement('div');
+    placeholder.textContent = "현재상영작 콘텐츠 준비 중...";
+    placeholder.style.padding = '20px';
+    placeholder.style.fontSize = '16px';
+
+    movieGridMain.appendChild(placeholder);
+  }
+
+  function updateSlider(slider) {
+    const slideWidth = 220;
+    slider.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+  }
+
+  mainMovieChart();
+</script>

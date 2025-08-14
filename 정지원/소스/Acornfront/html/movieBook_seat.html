@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/movieBook_seat.css">
+</head>
+<body>
+    <div class="mainContainer">
+        <div class="movieInfo-title">
+            <a style="margin-left: 10px;" onclick="loadPage('./html/movieBook_cinema.html')">&lang;</a>
+            <h3>극장판 귀멸의 칼날:무한성편<br>2025.08.29 (금)</h3>
+        </div>
+        <div class="audience-selector">
+            <h3>관람인원</h3>
+            <div class="total-count">
+                <span>총 인원: </span>
+                <span id="totalCount"></span>
+            </div>
+            <div class="audience-group" data-type="adult">
+                <div class="label">일반</div>
+                <div class="number-buttons">
+                    <button type="button">1</button>
+                    <button type="button">2</button>
+                    <button type="button">3</button>
+                    <button type="button">4</button>
+                    <button type="button">5</button>
+                    <button type="button">6</button>
+                    <button type="button">7</button>
+                    <button type="button">8</button>
+                </div>
+            </div>
+            <div class="audience-group" data-type="teen">
+                <div class="label">청소년</div>
+                <div class="number-buttons">
+                    <button type="button">1</button>
+                    <button type="button">2</button>
+                    <button type="button">3</button>
+                    <button type="button">4</button>
+                    <button type="button">5</button>
+                    <button type="button">6</button>
+                    <button type="button">7</button>
+                    <button type="button">8</button>
+                </div>
+            </div>
+            <div class="audience-group" data-type="special">
+                <div class="label">우대</div>
+                <div class="number-buttons">
+                    <button type="button">1</button>
+                    <button type="button">2</button>
+                    <button type="button">3</button>
+                    <button type="button">4</button>
+                    <button type="button">5</button>
+                    <button type="button">6</button>
+                    <button type="button">7</button>
+                    <button type="button">8</button>
+                </div>
+            </div>
+            <div class="audience-group" data-type="elder">
+                <div class="label">경로</div>
+                <div class="number-buttons">
+                    <button type="button">1</button>
+                    <button type="button">2</button>
+                    <button type="button">3</button>
+                    <button type="button">4</button>
+                    <button type="button">5</button>
+                    <button type="button">6</button>
+                    <button type="button">7</button>
+                    <button type="button">8</button>
+                </div>
+            </div>
+        </div>
+        <div class="movie-time">
+            <ul class="screenings">
+                <li class="screening-row">
+                    <span>09:00~11:45</span><br>
+                    <span class="seats">129석/178석</span>
+                </li>
+                <li class="screening-row">
+                    <span>09:00~11:45</span><br>
+                    <span class="seats">129석/178석</span>
+                </li>
+                <li class="screening-row">
+                    <span>09:00~11:45</span><br>
+                    <span class="seats">129석/178석</span>
+                </li>
+                <li class="screening-row">
+                    <span>09:00~11:45</span><br>
+                    <span class="seats">129석/178석</span>
+                </li>
+                <li class="screening-row">
+                    <span>09:00~11:45</span><br>
+                    <span class="seats">129석/178석</span>
+                </li>
+            </ul>
+        </div>
+        <div class="select-seats">
+            <div class="select-seats-header">
+                <span>좌석을 선택해 주세요</span>
+                <button id="seats-mainBtn">선택</button>
+            </div>
+            <div class="select-seats-img">
+                <span>screen</span>
+                <div class="img"></div>
+            </div>
+            <div class="seats-info">
+                <span></span>일반석(176) <span></span>장애인석(2)
+            </div>
+        </div>
+        <!-- 좌석 선택 모달 -->
+        <div id="seatSelectionModal" class="seat-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 style="font-size: 14px;">좌석 선택</h4>
+                    <div class="screen">
+                        <span>screen</span>
+                        <div class="img"><img src="https://cdn.cgv.co.kr/cgvpomscontent/static/public/images/cnm/bg/bg_map_screen.png"></div>
+                    </div>
+                    <button id="closeModalBtn">&times;</button>
+                </div>
+                <div class="seat-grid">
+                    <!-- 좌석 버튼들이 JS로 생성됩니다 -->
+                </div>
+                <div class="modal-footer">
+                    <button id="confirmSeatsBtn" disabled>확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/movieBook_seat.js"></script>
+</body>
+
+</html>

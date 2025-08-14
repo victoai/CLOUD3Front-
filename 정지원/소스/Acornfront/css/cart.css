@@ -1,0 +1,42 @@
+body { background: #fff; font-family: 'Noto Sans KR', sans-serif; }
+.cart-wrap { max-width: 720px; margin: 0 auto; padding-bottom: 180px; }
+.cart-title { font-size: 2em; margin: 44px 0 36px 0; font-weight: bold; text-align:center;}
+.cart-list { display: flex; flex-direction: column; gap: 80px; }
+.cart-detail {
+  background: #fff;
+  border-radius: 20px;
+  padding: 38px 38px 32px 38px;
+  box-shadow: 0 3px 18px #f6eaea;
+  margin-bottom: 0;
+}
+.detail-top { display: flex; gap: 44px; align-items: flex-start; }
+.detail-img img { max-width: 240px; border-radius: 18px; }
+.detail-right { flex:1; }
+.detail-prod-name { font-size: 1.17em; font-weight: bold; margin: 10px 0 9px 0;}
+.detail-desc { color: #757575; font-size: 1.01em; margin-bottom: 12px;}
+.detail-price { font-size: 1.32em; color: #111; font-weight: bold; margin-bottom: 19px; }
+.detail-notice { margin: 32px 0 20px 0; background: #faf9f5; border-radius: 14px; padding: 18px 18px 16px 18px; font-size: 0.97em; line-height: 1.65; color: #444; }
+.detail-option-title { font-size: 1.08em; font-weight: bold; margin: 24px 0 7px 0; }
+.detail-pickup-info { color: #d20021; font-weight: bold; margin-bottom: 7px; }
+.detail-selectbar { margin: 4px 0 18px 0; }
+.detail-selectbar select { border: 1px solid #ccc; padding: 6px 12px; border-radius: 8px; font-size: 1em; }
+.detail-qty-box { display: flex; align-items: center; gap: 10px; margin: 16px 0; }
+.qty-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid #ccc; background: #fff; font-size: 1.3em; font-weight: bold; cursor: pointer; }
+.qty-input { width: 44px; text-align: center; border: none; font-size: 1.09em; }
+.detail-bottom-row { display: flex; justify-content: space-between; align-items: center; margin-top: 14px;}
+.prod-sum { font-size: 1.13em; font-weight: bold; color: #d20021;}
+.prod-del-btn { background:none; border:none; color:#888; font-size:1.1em; cursor:pointer; }
+.cart-empty { text-align:center; color:#aaa; font-size:1.2em; margin:110px 0 130px 0;}
+/* 하단 고정 바 */
+.cart-bar { position: fixed; left: 0; right: 0; bottom: 0; background: #fff; border-top: 1px solid #eee;
+  box-shadow: 0 0 10px #ffeaea; padding: 23px 0 18px 0; display: flex; justify-content: center; gap: 30px; z-index: 100;}
+.cart-bar-inner { width: 700px; display: flex; align-items: center; justify-content: space-between;}
+.bar-left {font-size: 1.18em;}
+.bar-btn { font-size: 1.08em; font-weight: bold; border: none; border-radius: 10px; padding: 15px 34px; cursor: pointer; }
+.cart-btn { background: #eee; color: #d20021; border: 1px solid #d20021; }
+.buy-btn { background: #d20021; color: #fff; }
+@media (max-width:800px){
+  .cart-wrap, .cart-bar-inner{ width:98vw; min-width:0; }
+  .cart-detail {padding: 16px 4vw 24px 4vw;}
+  .cart-bar {padding-left:0; padding-right:0;}
+}

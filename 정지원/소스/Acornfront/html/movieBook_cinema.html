@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/movieBook_cinema.css">
+    <script>renderMovieList(movies);</script>
+</head>
+
+<body>
+    <div class="mainContainer">
+        <div class="selectDate-wrap">
+            <div class="title">
+                <a >영화별 예매</a>
+                <a onclick="loadPge('./html/movieBook_cinema.html')">극장별 예매</a>
+                <a style="margin-left: 390px;"
+                    onclick="loadPage('./html/ticket.html');">&times;</a>
+            </div>
+            <div class="select-date">
+                <ul class="date-list">
+                    <li class="active">목<br>07</li>
+                    <li>금<br>08</li>
+                    <li>토<br>09</li>
+                    <li>일<br>10</li>
+                    <li>월<br>11</li>
+                    <li>화<br>12</li>
+                    <li>수<br>13</li>
+                    <li>목<br>14</li>
+                    <li>금<br>15</li>
+                    <li>토<br>16</li>
+                </ul>
+                <ul class="time-filter">
+                    <li class="active">전체</li>
+                    <li>오전</li>
+                    <li>오후</li>
+                    <li>18시 이후</li>
+                    <li>심야</li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="sort-wrap">
+            <div class="select-cinema">
+                <a href="#">홍대</a>
+            </div>
+        </div>
+        <div id="movie-list" class="movie-list"></div>
+
+    </div>
+    <script src="./js/movieBook_cinema.js"></script>
+</body>
+
+</html>

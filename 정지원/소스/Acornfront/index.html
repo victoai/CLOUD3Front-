@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CGV 클론</title>
+    <style>
+
+        body{
+            margin: 0;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+        }
+
+        aside {
+            padding: 3px;
+        }
+
+        aside.sidebar {
+            /*z-index: -999;*/
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            /*border: 1px solid rgb(5, 16, 233); 왼쪽 사이드바*/
+            margin: 0;
+            box-sizing: border-box;
+
+           
+        }
+
+        main {
+            margin-left: 250px;
+            /* 사이드바 너비 만큼 */
+            margin-right: 250px;
+            width: auto;
+            /* 필요 시 100% - 500px도 가능*/
+            /*border: 1px solid rgb(14, 15, 15); 중간 메인창*/
+            padding: 20px; 
+            box-sizing: border-box;
+            /*background-color: aqua;*/
+        }
+
+        .side-main {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            /* 세로 방향 정렬 */
+            gap: 15px;
+            /* 자식 요소 사이 간격 */
+           
+            /* 아래 공백 추가 */
+        }
+
+        /* side-banner도 화면 오른쪽 고정 */
+        aside.side-banner {
+
+            /*z-index: -999;*/
+            position: fixed;
+            right: 0;
+            /* 오른쪽 고정 */
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            /*border: 1px solid rgb(200, 0, 0);  오른쪽 아시드바 */
+            background: #fff;
+            padding: 30px;
+            margin: 0 auto;
+
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            /* 하단 정렬 */
+
+            box-sizing: border-box;
+
+
+        }
+
+
+        .logo {
+            width: 150px;
+            height: 100px;
+            background-image: url('./images/index/logo.webp');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin: 0 auto;
+        }
+
+        nav ul {
+            list-style: none;
+
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .cgv-footer-content {
+            font-size: 10px;
+            color: gray;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 4px 0;
+            display: flex;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .footer-links li {
+            position: relative;
+            font-size: 10px;
+            color: gray;
+
+        }
+
+        .footer-links li a {
+            text-decoration: none;
+            color: black;
+
+        }
+
+        .footer-links li:not(:last-child)::after {
+            content: "|";
+            margin-left: 10px;
+            color: #aaa;
+        }
+
+        .sidebar {
+            position: relative;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 10px;
+            left: 0;
+            width: 250px;
+        }
+
+        /*ad*/
+
+
+        .ad-container {
+
+            position: relative;
+            width: 250px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+
+
+        }
+
+        .poster-img {
+            width: 100%;
+            display: block;
+            filter: brightness(0.6);
+            /* 어둡게 처리해서 글자가 잘 보이도록 */
+        }
+
+        .ad-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            color: white;
+            z-index: 2;
+        }
+
+        .ad-text h2 {
+            margin: 0 0 10px;
+            font-size: 22px;
+        }
+
+        .ad-text p {
+            margin: 0 0 16px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        button {
+            background-color: white;
+            color: #002244;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e0e0e0;
+        }
+
+        /*qr*/
+        .qr-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f5f5f5;
+            border-radius: 12px;
+            padding: 16px;
+            width: 210px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .qr-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .qr-text .main-text {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #000;
+        }
+
+        .qr-text .sub-text {
+            margin: 0;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .qr-image img {
+            width: 64px;
+            height: 64px;
+        }
+
+        /*header*/
+        header {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+        }
+
+        .top-header {
+            position: static;
+            display: flex;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo"></div>
+            <nav class="nav-menu">
+                <ul>
+                    <li>
+                        <a href="#" onclick="loadPage('./html/home.html'); return false;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path aria-hidden="true" fill-rule="evenodd" clip-rule="evenodd" d="M9.76668 2.76002C11.0153 1.74002 12.9815 1.75002 14.24 2.77002L20.6795 8.01001C21.584 8.76001 22.1444 10.26 21.9674 11.43L20.7287 18.97C20.4436 20.64 18.8705 22 17.209 22H6.78777C5.1066 22 3.56308 20.67 3.27797 18.98L2.03921 11.44C1.84258 10.26 2.40297 8.76001 3.32712 8.01001L9.76668 2.76002ZM12 18C13.1046 18 14 17.1046 14 16C14 14.8954 13.1046 14 12 14C10.8954 14 10 14.8954 10 16C10 17.1046 10.8954 18 12 18Z" fill="#242424"></path>
+                            </svg>홈
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="loadPage('./html/cinema.html'); return false;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path aria-hidden="true" d="M15.0603 19.3916C14.4403 19.8116 13.6603 20.1616 12.7103 20.4716L11.1303 20.9916C7.16034 22.2716 5.07034 21.2016 3.78034 17.2316L2.50034 13.2816C1.22034 9.31156 2.28034 7.21156 6.25034 5.93156L7.83034 5.41156C8.24034 5.28156 8.63034 5.17156 9.00034 5.10156C8.70034 5.71156 8.46034 6.45156 8.26034 7.30156L7.28034 11.4916C6.30034 15.6716 7.59034 17.7316 11.7603 18.7216L13.4403 19.1216C14.0203 19.2616 14.5603 19.3516 15.0603 19.3916Z" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path aria-hidden="true" d="M12.6406 8.53125L17.4906 9.76125" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path aria-hidden="true" d="M11.6602 12.3984L14.5602 13.1384" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path aria-hidden="true" d="M20.9602 5.09854C22.0402 6.29854 22.2302 8.01854 21.6602 10.4385L20.6802 14.6185C19.8402 18.2285 18.1802 19.6885 15.0602 19.3885C14.5602 19.3485 14.0202 19.2585 13.4402 19.1185L11.7602 18.7185C7.59018 17.7285 6.30018 15.6685 7.28018 11.4885L8.26018 7.29854C8.46018 6.44854 8.70018 5.70854 9.00018 5.09854C10.1702 2.67854 12.1602 2.02854 15.5002 2.81854L17.1702 3.20854" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>씨네톡
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="loadPage('./html/ticket.html'); return false;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path aria-hidden="true" d="M23 10V9C23 5 22 4 18 4H6C2 4 1 5 1 9V9.5C2.38 9.5 3.5 10.62 3.5 12C3.5 13.38 2.38 14.5 1 14.5V15C1 19 2 20 6 20H18C22 20 23 19 23 15C21.62 15 20.5 13.88 20.5 12.5" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path aria-hidden="true" d="M9 4L9 20" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 5"></path>
+                            </svg>예매/예약
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="loadPage('./html/store.html'); return false;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path aria-hidden="true" d="M4.14453 9.85938L5.35976 20.2628C5.50693 21.5227 6.57437 22.4728 7.84288 22.4728H16.2773C17.4959 22.4728 18.537 21.5942 18.7418 20.393L20.0024 12.9995" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path aria-hidden="true" d="M16.3125 10.0391L15.2767 22.0391" stroke="#242424" stroke-width="1.5" stroke-linecap="round"></path>
+                                <path aria-hidden="true" d="M7.6947 10.0391L8.73047 22.0391" stroke="#242424" stroke-width="1.5" stroke-linecap="round"></path>
+                                <path aria-hidden="true" d="M12 10.0391L12 21.9565" stroke="#242424" stroke-width="1.5" stroke-linecap="round"></path>
+                                <path aria-hidden="true" d="M5.03305 6.31758C4.17396 6.35914 3.25199 6.92764 3.04816 7.75312C2.84355 8.58175 3.03633 9.50482 3.6035 9.79902H20.4634C20.8364 9.4522 21.1248 8.53583 20.8752 7.75312C20.6256 6.9704 19.8252 6.41165 19.008 6.32442C19.0123 6.25661 19.0146 6.18818 19.0146 6.11918C19.0146 4.49833 17.787 3.18437 16.2728 3.18437C15.8514 3.18437 15.4523 3.28608 15.0957 3.46781C14.6926 2.24848 13.6059 1.375 12.3286 1.375C11.0398 1.375 9.94501 2.26442 9.55079 3.50112C9.06829 3.06951 8.44699 2.80975 7.76901 2.80975C6.23353 2.80975 4.98877 4.14213 4.98877 5.78569C4.98877 5.96725 5.00396 6.145 5.03305 6.31758Z" stroke="#242424" stroke-width="1.5" stroke-linejoin="round"></path>
+                                <path aria-hidden="true" d="M15.8415 7.20639C15.6097 6.50562 14.9493 6 14.1708 6C13.3922 6 12.7318 6.50562 12.5 7.20639" stroke="#242424" stroke-width="1.5" stroke-linecap="round"></path>
+                                <circle aria-hidden="true" cx="8.70156" cy="6.6" r="1.1" fill="#242424"></circle>
+                            </svg>매점
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="loadPage('./html/more.html'); return false;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g aria-hidden="true" clip-path="url(#clip0_2700_19922)">
+                                    <path d="M1 20.9963C2.04954 18.1483 4.78758 16.1172 8 16.1172C11.2124 16.1172 13.9505 18.1483 15 20.9963" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M3.77202 3.41401C4.94802 2.51801 6.404 2 8 2C11.864 2 15 5.136 15 9C15 12.864 11.864 16 8 16C4.136 16 1 12.864 1 9" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M10.5394 11.8828C9.82707 12.4025 8.94943 12.7093 8.00016 12.7093C7.05088 12.7093 6.17324 12.4025 5.46094 11.8828" stroke="#242424" stroke-width="1.5" stroke-linecap="round"></path>
+                                    <path d="M23 6H18" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M23 10H19" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M23 14H17" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </g>
+                                <defs aria-hidden="true">
+                                    <clipPath id="clip0_2700_19922">
+                                        <rect width="24" height="24" fill="white"></rect>
+                                    </clipPath>
+                                </defs>
+                            </svg>더보기
+                        </a>
+                    </li>
+                </ul>
+                <hr />
+                <ul>
+                    <li>
+                        <a href="#" onclick="loadPage('./html/location.html'); return false;">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path aria-hidden="true" d="M12.2285 18.1381C14.4598 15.5862 18.1793 10.844 18.1793 7.58966C18.1793 6.03955 17.7801 4.70367 17.1157 3.60386C16.3246 2.29406 15.2809 1.4484 14.1657 0.873804C13.0506 0.299207 11.8098 0 10.5897 0C6.8897 0 3 2.75125 3 7.58966C3 10.844 6.71956 15.5862 8.95086 18.1381C9.82994 19.1435 11.3494 19.1435 12.2285 18.1381Z" fill="url(#paint0_linear_5942_19576)"></path>
+                                <path aria-hidden="true" d="M10.5844 10.0594C12.1563 10.0594 13.4305 8.78518 13.4305 7.21331C13.4305 5.64144 12.1563 4.36719 10.5844 4.36719C9.01253 4.36719 7.73828 5.64144 7.73828 7.21331C7.73828 8.78518 9.01253 10.0594 10.5844 10.0594Z" fill="white"></path>
+                                <defs aria-hidden="true">
+                                    <linearGradient id="paint0_linear_5942_19576" x1="10.5897" y1="0" x2="10.5897" y2="19.9229" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#FF174F"></stop>
+                                        <stop offset="1" stop-color="#FF6637"></stop>
+                                    </linearGradient>
+                                </defs>
+                            </svg>상영관 찾기
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="loadPage('./html/special.html'); return false;">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path aria-hidden="true" fill-rule="evenodd" clip-rule="evenodd" d="M3.40371 10.0801L4.59227 1.90133C4.66747 1.38384 5.11113 1 5.63405 1H14.0341C14.557 1 15.0006 1.38384 15.0758 1.90133L16.2644 10.0801H17.5877C18.081 10.0801 18.5007 10.4399 18.576 10.9276L19.6562 17.9276C19.7497 18.5335 19.281 19.0801 18.6679 19.0801H1.00022C0.387144 19.0801 -0.0815884 18.5335 0.0119148 17.9276L1.09216 10.9276C1.16741 10.4399 1.58707 10.0801 2.08046 10.0801H3.40371Z" fill="url(#paint0_linear_5942_19578)"></path>
+                                <path aria-hidden="true" d="M6.83398 15V7H9.97211C11.7898 7 12.834 8.12155 12.834 9.69613C12.834 11.2928 11.7732 12.3923 9.92791 12.3923H8.49144V15H6.83398ZM8.49144 11.0552H9.66271C10.6461 11.0552 11.1268 10.5028 11.1213 9.69613C11.1268 8.90055 10.6461 8.36464 9.66271 8.35912H8.49144V11.0552Z" fill="white"></path>
+                                <defs aria-hidden="true">
+                                    <linearGradient id="paint0_linear_5942_19578" x1="9.83647" y1="15.9395" x2="9.83647" y2="2.12799" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#FF6139"></stop>
+                                        <stop offset="1" stop-color="#FF184F"></stop>
+                                    </linearGradient>
+                                </defs>
+                            </svg>특별관
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+            <footer class="footer">
+                <div class="cgv-footer-content-title">
+                    <p>
+                        CJ CGV(주)
+                        <svg id="toggle-icon" width="12" height="12" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path aria-hidden="true" d="M3 7.5L10 14.5L17 7.5" stroke="#161616" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </p>
+                </div>
+                <div class="cgv-footer-content" style="display:none;">
+                    <p>대표이사 : 정종민</p>
+
+                    <p>(04377)서울특별시 용산구 한강대로 23길 55, 아이파크몰 6층(한강로동)</p>
+
+                    <p>통신판매업신고번호 : 2017-서울용산-0662사업자정보확인</p>
+
+                    <p>사업자등록번호 : 104-81-45690<br>호스팅사업자 : CJ올리브네트웍스</p>
+
+                    <p>대표이메일 : cjcgvmaster@cj.net<br>고객센터 : 1544-1122</p>
+                </div>
+                <div class="footer-links-div">
+                    <ul class="footer-links">
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">개인정보처리방침</a></li>
+                    </ul>
+                    <ul class="footer-links">
+                        <li><a href="#">위치기반서비스이용약관</a></li>
+                        <li><a href="#">법적고지</a></li>
+                    </ul>
+
+                    <select class="company-dropdown" onchange="if(this.value) window.open(this.value, '_blank');">
+                        <option value="" style="display: none;">계열사 바로가기</option>
+
+                        <optgroup label="CJ그룹">
+                            <option value="https://www.cj.net/">CJ주식회사</option>
+                        </optgroup>
+
+                        <optgroup label="식품 & 식품서비스">
+                            <option value="https://www.cj.co.kr/kr/index">CJ제일제당</option>
+                            <option value="https://www.cjfoodville.co.kr/main.asp">CJ푸드빌</option>
+                            <option value="http://www.cjfreshway.com/index.jsp">CJ프레시웨이</option>
+                        </optgroup>
+
+                        <optgroup label="생명공학">
+                            <option value="https://www.cj.co.kr/kr/aboutus/business/bio">CJ제일제당 BIO사업부문</option>
+                            <option value="https://www.cj.co.kr/kr/aboutus/business/cjfeedncare">CJ Feed&amp;Care</option>
+                        </optgroup>
+
+                        <optgroup label="물류 & 신유통">
+                            <option value="https://www.cjlogistics.com/ko/main">CJ대한통운</option>
+                            <option value="http://www.cjenc.co.kr/kr/Default.asp">CJ대한통운 건설부문</option>
+                            <option value="https://www.oliveyoung.co.kr/store/company/brandStory.do">CJ올리브영</option>
+                            <option value="https://www.cjolivenetworks.co.kr/">CJ올리브네트웍스</option>
+                            <option value="http://company.cjonstyle.com/index.asp">CJ ENM 커머스부문</option>
+                        </optgroup>
+
+                        <optgroup label="엔터테인먼트 & 미디어">
+                            <option value="https://www.cjenm.com/ko/">CJ ENM 엔터테인먼트부문</option>
+                            <option value="http://corp.cgv.co.kr">CJ CGV</option>
+                        </optgroup>
+                    </select>
+
+                </div>
+            </footer>
+        </aside>
+
+        <main>
+            <header>
+                <div class="top-header">
+                    <div class="ticket-reservation-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M23 10V9C23 5 22 4 18 4H6C2 4 1 5 1 9V9.5C2.38 9.5 3.5 10.62 3.5 12C3.5 13.38 2.38 14.5 1 14.5V15C1 19 2 20 6 20H18C22 20 23 19 23 15C21.62 15 20.5 13.88 20.5 12.5" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M8.25 20L8.25 18C8.25 17.5858 8.58579 17.25 9 17.25C9.41421 17.25 9.75 17.5858 9.75 18L9.75 20C9.75 20.4142 9.41421 20.75 9 20.75C8.58579 20.75 8.25 20.4142 8.25 20ZM8.25 14L8.25 10C8.25 9.58579 8.58579 9.25 9 9.25C9.41421 9.25 9.75 9.58579 9.75 10L9.75 14C9.75 14.4142 9.41421 14.75 9 14.75C8.58579 14.75 8.25 14.4142 8.25 14ZM8.25 6L8.25 4C8.25 3.58579 8.58579 3.25 9 3.25C9.41421 3.25 9.75 3.58579 9.75 4L9.75 6C9.75 6.41421 9.41421 6.75 9 6.75C8.58579 6.75 8.25 6.41421 8.25 6Z" fill="#242424"></path>
+                        </svg>
+                    </div>
+                    <div class="alert-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path aria-hidden="true" d="M12 2V3" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path aria-hidden="true" d="M15 19C15 20.6569 13.6569 22 12 22C10.3431 22 9 20.6569 9 19" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path aria-hidden="true" d="M19 19V9.83333C19 6.61167 15.866 4 12 4C8.134 4 5 6.61167 5 9.83333M5 19V13.5" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path aria-hidden="true" d="M3 19H21" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                    <div class="search-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path aria-hidden="true" d="M11 3C15.4211 3 19 6.57895 19 11C19 15.4211 15.4211 19 11 19C6.57895 19 3 15.4211 3 11C3 7.88421 4.77684 5.18947 7.37895 3.86737" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path aria-hidden="true" d="M21 21L17 17" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                </div>
+            </header>
+            <section id="content">
+
+            </section>
+            <!-- 여기에 본문이 동적으로 로딩됨 -->
+        </main>
+
+        <aside class="side-banner">
+            <div class="side-main">
+                <div class="ad-container">
+                    <img src="./images/index/fantastic4_poster.webp" alt="판타스틱4 포스터" class="poster-img" />
+                    <div class="ad-text">
+                        <h2>판타스틱4</h2>
+                        <p>판타스틱4 예매오픈!<br />
+                            7월 극장에서 판타스틱4와 함께</p>
+                        <button onclick="showMore()">자세히보기 ></button>
+                    </div>
+                </div>
+                <div class="qr-box">
+                    <div class="qr-text">
+                        <p class="main-text">QR코드 찍고<br><strong>CGV 앱에서 자세히 보기</strong></p>
+                        <p class="sub-text">QR코드를 스캔해보세요</p>
+                    </div>
+                    <div class="qr-image">
+                        <img src="./images/index/다운로드qr.png" alt="QR 코드">
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        // 페이지 내용을 동적으로 불러오는 함수
+        async function loadPage(url) {
+  const content = document.getElementById('content');
+  content.innerHTML = '<div class="skeleton">불러오는 중...</div>';
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('페이지 불러오기 실패');
+    const html = await response.text();
+    content.innerHTML = html;
+
+    // 임시 DOM
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+
+    // 동적 CSS 로드 (중복방지)
+    tempDiv.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (![...document.head.querySelectorAll('link[rel="stylesheet"]')].some(l => l.href.includes(href))) {
+        const newLink = document.createElement('link');
+        newLink.rel = 'stylesheet';
+        newLink.href = href;
+        document.head.appendChild(newLink);
+      }
+    });
+
+    // 동적 JS 로드 (중복방지)
+    const scriptPromises = [];
+    tempDiv.querySelectorAll('script[src]').forEach(script => {
+      const src = script.getAttribute('src');
+      if (![...document.querySelectorAll('script[src]')].some(s => s.src.includes(src))) {
+        scriptPromises.push(new Promise(resolve => {
+          const newScript = document.createElement('script');
+          newScript.src = src;
+          newScript.onload = resolve;
+          document.body.appendChild(newScript);
+        }));
+      }
+    });
+
+    // inline script 바로 실행
+    tempDiv.querySelectorAll('script:not([src])').forEach(script => {
+      const newScript = document.createElement('script');
+      newScript.textContent = script.textContent;
+      document.body.appendChild(newScript);
+    });
+
+    // 외부 script들이 모두 로드된 후(상품 출력, 이벤트 정상 작동)
+    await Promise.all(scriptPromises);
+
+  } catch (error) {
+    content.innerHTML = `<p style="color:red;">오류: ${error.message}</p>`;
+  }
+}
+
+
+
+        // 페이지가 처음 열릴 때 자동으로 'home.html'을 로드
+        window.onload = function() {
+            loadPage('./html/home.html');
+        };
+
+        /*CJ CGV(주)  토글*/
+        const title = document.querySelector('.cgv-footer-content-title');
+        const testContent = document.querySelector('.cgv-footer-content');
+        const toggleIcon = document.getElementById('toggle-icon');
+
+        const downPath = "M3 7.5L10 14.5L17 7.5";
+        const upPath = "M3 13.5L10 6.5L17 13.5";
+
+        title.addEventListener('click', () => {
+            if (testContent.style.display === 'none' || testContent.style.display === '') {
+                testContent.style.display = 'block';
+                // 화살표 위로 (up)
+                toggleIcon.querySelector('path').setAttribute('d', upPath);
+            } else {
+                testContent.style.display = 'none';
+                // 화살표 아래로 (down)
+                toggleIcon.querySelector('path').setAttribute('d', downPath);
+            }
+        });
+        
+    </script>
+    
+</body>
+
+</html>

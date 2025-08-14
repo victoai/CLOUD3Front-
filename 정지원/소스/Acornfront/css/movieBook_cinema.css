@@ -1,0 +1,183 @@
+a {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: white;
+    text-underline-position: under;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+
+.mainContainer {
+    width: 600px;
+    margin: 0 auto;
+    border: 1px solid black;
+
+    position: relative;
+}
+
+.selectDate-wrap {
+    width: 100%;
+    height: 200px;
+    border: 1px solid black;
+
+    position: relative;
+    z-index: 0;
+}
+
+.selectDate-wrap::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/images/ticket/movieBook_cinema_bg.webp') no-repeat center center / cover;
+    filter: brightness(0.3) blur(2px);
+    z-index: -1;
+}
+
+
+.selectDate-wrap .title {
+    width: 100%;
+    height: 50px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.selectDate-wrap .title a:first-child {
+    font-size: 14px;
+    font-weight: normal;
+}
+.select-date{
+    margin-left: 10px;
+}
+.date-list,
+.time-filter {
+    display: flex;
+    gap: 5px;
+    padding: 0;
+    margin-top: 15px 0 0 8px !important;
+    list-style: none;
+}
+
+.date-list li,
+.time-filter li {
+    border-radius: 10px;
+    padding: 13px 1px;
+    text-align: center;
+    background: #222;
+    margin-top: 10px;
+    /* 기본 배경색 */
+    color: #fff;
+    /* 기본 글씨색 */
+    font-size: 16px;
+    cursor: pointer;
+    min-width: 52px;
+}
+
+.date-list li.active,
+.time-filter li.active {
+    background: #FF4444;
+    color: #fff;
+}
+
+.date-list li {
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.time-filter li {
+    font-weight: 400;
+    font-size: 15px;
+    padding: 5px 5px;
+    margin-top: 0px;
+}
+
+.select-cinema {
+    border-bottom: 10px solid #f0f0f0;
+    padding-bottom: 20px;
+}
+
+.select-cinema a {
+    width: 55px;
+    height: 35px;
+    margin: 20px 0 0 20px;
+    border-radius: 17px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 영화 리스트 */
+.movie-list {
+    margin: 0 auto;
+    width: 600px;
+}
+
+.movie-item {
+    margin-bottom: 32px;
+    border-radius: 11px;
+    padding: 22px 22px 10px;
+}
+
+.movie-poster {
+    width: 40px;
+    float: left;
+    margin-right: 20px;
+    border-radius: 6px;
+}
+
+.movie-title {
+    height: 60px;
+    font-size: 20px;
+    font-weight: 600;
+    padding-bottom: 15px;
+    color: black;
+    margin-bottom: 12px;
+    line-height: 60px;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.hall {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.seats {
+    font-size: 12px;
+}
+
+.screenings {
+    display: flex;
+}
+
+.screening-row {
+    width: 150px;
+    height: 60px;
+    align-items: center;
+    padding: 5px 0 0 10px;
+    margin: 10px 10px 0 0;
+    border: 1px solid #e9e9e9;
+    border-radius: 10px;
+    cursor: pointer;
+}

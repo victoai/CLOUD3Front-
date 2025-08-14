@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>장바구니</title>
+  <link rel="stylesheet" href="../css/cart.css">
+  
+</head>
+<body>
+  <div class="cart-wrap">
+    <div class="cart-title">장바구니</div>
+    <div id="cart-list" class="cart-list"></div>
+    <div id="cart-empty" class="cart-empty" style="display:none;">장바구니가 비어 있습니다.</div>
+  </div>
+  <div class="cart-bar">
+    <div class="cart-bar-inner">
+      <span class="bar-left" id="cart-total">총 0원</span>
+      <div>
+        <button class="bar-btn cart-btn" onclick="clearCart()">전체삭제</button>
+        <button class="bar-btn buy-btn" onclick="checkout()">결제하기</button>
+      </div>
+    </div>
+  </div>
+  <script src="../js/cart.js"></script>
+</body>
+</html>

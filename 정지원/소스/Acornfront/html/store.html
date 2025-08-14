@@ -1,0 +1,70 @@
+<!-- store.html -->
+<link rel="stylesheet" href="../css/store.css">
+
+<!--<script>renderStoreList()</script>-->
+
+<section id="store-root">
+  <!-- 상단 메뉴 -->
+  <div class="store-navbar">
+    <div class="store-navbar-inner">
+      <button class="store-navbar-btn active" data-tab="fastorder">패스트오더</button>
+      <button class="store-navbar-btn" data-tab="giftshop">기프트샵</button>
+    </div>
+  </div>
+  
+  <!-- 주문 정보 선택 영역 -->
+  <div class="store-selectbar">
+    <select id="theater-select">
+      <option>용산아이파크몰</option>
+      <option>강남</option>
+      <option>홍대</option>
+    </select>
+    <select id="date-select">
+      <option>오늘 (8/6)</option>
+      <option>내일 (8/7)</option>
+    </select>
+    <select id="order-type-select">
+      <option>패스트오더</option>
+      <option>미리구매</option>
+    </select>
+    <div class="store-notice">
+      * 픽업장소 및 시간은 각 극장 안내에 따릅니다.
+    </div>
+  </div>
+  
+  <!-- 배너/광고 -->
+  <div class="store-banner">
+    <img src="../images/store/img_fastorder.webp" alt="배너" />
+    <div class="banner-text">키오스크에서 기다리지 말고<br>패스트오더로 주문하고 픽업하세요!</div>
+  </div>
+  
+  <!-- 중분류 탭 -->
+  <div class="store-mid-category">
+    <button class="mid-btn active" data-category="popcorn">팝콘팩토리</button>
+    <button class="mid-btn" data-category="cinepub">씨네펍</button>
+    <button class="mid-btn" data-category="photoplay">포토플레이</button>
+  </div>
+  
+  <!-- 소분류 탭 -->
+  <div class="store-sub-category">
+    <button class="sub-btn active" data-sub="new">신메뉴</button>
+    <button class="sub-btn" data-sub="combo">콤보</button>
+    <button class="sub-btn" data-sub="popcorn">팝콘</button>
+    <button class="sub-btn" data-sub="drink">음료</button>
+    <button class="sub-btn" data-sub="snack">스낵</button>
+    <button class="sub-btn" data-sub="goods">캐릭터 굿즈</button>
+  </div>
+  
+  <!-- 정렬 탭 -->
+  <div class="store-sort">
+    <button class="sort-btn active" data-sort="recommend">추천순</button>
+    <button class="sort-btn" data-sort="popular">인기순</button>
+    <button class="sort-btn" data-sort="rating">평점순</button>
+  </div>
+  
+  <!-- 상품 리스트 -->
+  <div class="store-list" id="store-list">
+    <!-- JS로 출력 -->
+  </div>
+  <script src="../js/store.js"></script>
+</section>

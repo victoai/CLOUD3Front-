@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>주문서 - 결제하기</title>
+  <link rel="stylesheet" href="../css/pay.css">
+</head>
+<body>
+  <form id="order-form">
+    <div class="container">
+      <!-- 좌측: 배송/상품 -->
+      <div class="order-left">
+        <div class="section-title">주문서</div>
+        <div class="order-prod-list" id="prod-list"></div>
+      </div>
+      <!-- 우측: 결제 요약 -->
+      <div class="order-right">
+        <div class="section-title">결제 금액</div>
+        <div class="pay-summary">
+          <div class="pay-row"><span>상품 금액</span><span id="sum-prod">0원</span></div>
+          <div class="pay-row sub"><span>할인 금액</span><span id="sum-sale">0원</span></div>
+          <div class="pay-row sub"><span>적립금 사용</span><span id="sum-point">0원</span></div>
+          <div class="pay-row sub"><span>배송비</span><span>무료배송</span></div>
+          <div class="pay-row total"><span>총 결제 금액</span><span id="sum-total">0원</span></div>
+        </div>
+        <div class="section-title">적립 혜택 <span style="font-size:0.93em;color:#888;">ⓘ</span></div>
+        <div class="pay-benefit">
+          CJ포인트 적립 <strong id="point1">0원</strong><br>
+        </div>
+        <button class="pay-btn" type="submit">결제하기</button>
+      </div>
+    </div>
+    <!-- 결제 완료 모달 -->
+    <div id="pay-modal" style="display:none;">
+      <div class="pay-modal-bg"></div>
+      <div class="pay-modal-imgbox">
+        <span class="pay-modal-title">결제 완료 !</span>
+        <img src="../images/paychar.webp" alt="결제완료" class="pay-modal-img">
+      </div>
+    </div>
+
+  </form>
+  <script src="../js/pay.js"></script>
+</body>
+
+</html>

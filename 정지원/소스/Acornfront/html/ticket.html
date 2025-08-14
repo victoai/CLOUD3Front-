@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        a {
+            padding: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            outline: none;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: white;
+            text-underline-position: under;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .contentArea {
+            width: 100%;
+            max-width: 600px;
+            min-width: 300px;
+            margin: 0 auto;
+            padding-top: 150px;
+            padding-left: 15px;
+            color: white;
+            background: black;
+            overflow: hidden;
+            box-sizing: border-box;
+
+            position: relative;
+        }
+
+        .contentArea::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            pointer-events: none;
+            filter: blur(8px) brightness(0.4);
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .tabArea {
+            width: 100%;
+            max-width: 590px;
+
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .tab-button {
+            height: 35px;
+            border-radius: 20px;
+            margin-top: 100px;
+            background: hsla(0, 0%, 100%, .12);
+            text-decoration: none;
+            font-size: 14px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 23px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .tab-button.active {
+            background-color: #fc5555;
+        }
+
+        .more {
+            position: absolute;
+            right: 20px;
+            font-weight: lighter;
+            font-size: 12px;
+        }
+
+        /* 극장별 예매 버튼 */
+        .bookInfo_content1 a {
+            width: 65px;
+            height: 35px;
+            border-radius: 15px;
+            background: hsla(0, 0%, 100%, .12);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+
+        /* mapimg 아이콘 */
+        .mapimg img {
+            width: 12px;
+            height: 12px;
+            margin-right: 3px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* 영화별 예매 */
+        .bookInfo_content2 {
+            width: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .bookInfo_content2 img {
+            width: 80px;
+            height: 114px;
+            border-radius: 5px;
+        }
+
+        .movieLst {
+            display: flex;
+            transition: transform 0.3s linear;
+        }
+
+        .movie {
+            padding: 3px;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+
+
+        /* 상영관 슬라이드 */
+        .bookInfo_content3 {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .bookInfo_content3 img {
+            width: auto;
+            height: 22px;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.3s linear;
+        }
+
+        .slide {
+            padding: 16px 24px;
+            margin-left: 7px;
+            font-size: 11px;
+            background: hsla(0, 0%, 100%, .12);
+            border-radius: 7px;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .slides .slide:first-child {
+            margin-left: 0;
+        }
+
+        .slide span {
+            white-space: nowrap;
+            overflow: visible;
+        }
+
+
+        /* 액티비티 공통 스타일 */
+        .activity_wrap .slide {
+            width: 96%;
+            height: 75px;
+            position: relative;
+            background: hsla(0, 0%, 100%, .12);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            margin-left: 0;
+        }
+
+        .activity_wrap .slide>img {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            border-radius: 6px;
+
+            position: absolute;
+            top: 15px;
+            left: 16px;
+        }
+
+        .activity_comment {
+            font-size: 12px;
+            margin-left: 16px;
+            flex: 1;
+            color: #c9c9c9;
+
+            position: absolute;
+            top: 20px;
+            left: 70px;
+        }
+
+        .activity_wrap .mapimg {
+            font-size: 12px;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            filter: brightness(0) saturate(100%) invert(88%) sepia(73%) saturate(454%) hue-rotate(20deg);
+
+            position: absolute;
+            bottom: 15px;
+            left: 85px;
+        }
+
+        .bookInfo_title1,
+        .bookInfo_title2,
+        .bookInfo_title3,
+        .activity_title1 {
+            font-weight: bold;
+            margin: 30px 0 8px 0;
+            font-size: 17px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contentArea">
+        <video autoplay muted loop playsinline class="background-video">
+            <source src="./images/ticket/ticketbg.mp4" type="video/mp4" />
+            동영상을 지원하지 않는 브라우저용 텍스트
+        </video>
+        <div class="content-wrapper">
+            <div class="tabArea">
+                <a href="#" class="tab-button active" id="tab-movie">영화</a>
+                <a href="#" class="tab-button" id="tab-activity">액티비티</a>
+            </div>
+            <div class="movieArea">
+                <!-- 극장별 예매 -->
+                <div class="bookInfo_wrap1">
+                    <div class="bookInfo_title1">
+                        극장별 예매
+                        <a href="#" class="more">더보기 &gt;</a>
+                    </div>
+                    <div class="bookInfo_content1">
+                        <a href="" onclick="loadPage('./html/movieBook_cinema.html'); return false;">
+                            <span class="mapimg"><img src="./images/ticket/movieBook_theater.png"
+                                    alt=""></span>
+                            홍대
+                        </a>
+                    </div>
+                </div>
+                <!-- 영화별 예매 -->
+                <div class="bookInfo_wrap2">
+                    <div class="bookInfo_title2">
+                        영화별 예매
+                        <a href="#" class="more">더보기 &gt;</a>
+                    </div>
+                    <div class="bookInfo_content2">
+                        <div class="movieLst">
+                            <a href="" class="movie"><img src="./images/ticket/movieImg1.jpg"
+                                    alt=""></a>
+                            <a href="" class="movie"><img src="./images/ticket/movieImg2.jpg"
+                                    alt=""></a>
+                            <a href="" class="movie"><img src="./images/ticket/movieImg3.jpg"
+                                    alt=""></a>
+                            <a href="" class="movie"><img src="./images/ticket/movieImg4.jpg"
+                                    alt=""></a>
+                            <a href="" class="movie"><img src="./images/ticket/movieImg5.jpg"
+                                    alt=""></a>
+                            <a href="" class="movie"><img src="./images/ticket/movieImg6.jpg"
+                                    alt=""></a>
+                            <a href="" class="movie"><img src="./images/ticket/movieImg7.jpg"
+                                    alt=""></a>
+                            <a href="" class="movie"><img src="./images/ticket/movieImg8.jpg"
+                                    alt=""></a>
+                            <a href="" class="movie"><img src="./images/ticket/movieImg9.jpg"
+                                    alt=""></a>
+                            <a href="" class="movie"><img src="./images/ticket/movieImg10.jpg"
+                                    alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 테크놀로지 상영관 -->
+                <div class="bookInfo_wrap3">
+                    <div class="bookInfo_title3">테크놀로지 상영관</div>
+                    <div class="bookInfo_content3">
+                        <div class="slides">
+                            <a href="" class="slide"><img
+                                    src="https://cgv.co.kr/_next/image?url=https%3A%2F%2Fcdn.cgv.co.kr%2Fcgvpomscontent%2Fstatic%2Fpublic%2Fimages%2Fmco%2Flogo%2Flogo_08_white.png&w=256&q=75"
+                                    alt=""><span>3면 확장 스크린</span></a>
+                            <a href="" class="slide"><img
+                                    src="https://cgv.co.kr/_next/image?url=https%3A%2F%2Fcdn.cgv.co.kr%2Fcgvpomscontent%2Fstatic%2Fpublic%2Fimages%2Fmco%2Flogo%2Flogo_03_white.png&w=96&q=75"
+                                    alt=""><span>특별한오감체험</span></a>
+                            <a href="" class="slide"><img
+                                    src="https://cgv.co.kr/_next/image?url=https%3A%2F%2Fcdn.cgv.co.kr%2Fcgvpomscontent%2Fstatic%2Fpublic%2Fimages%2Fmco%2Flogo%2Flogo_04_white.png&w=256&q=75"
+                                    alt=""><span>궁극의 몰입감</span></a>
+                            <a href="" class="slide"><img
+                                    src="https://cgv.co.kr/_next/image?url=https%3A%2F%2Fcdn.cgv.co.kr%2Fcgvpomscontent%2Fstatic%2Fpublic%2Fimages%2Fmco%2Flogo%2Flogo_soundx_white.png&w=256&q=75"
+                                    alt=""><span>3D 입체음향</span></a>
+                            <a href="" class="slide"><img
+                                    src="https://cgv.co.kr/_next/image?url=https%3A%2F%2Fcdn.cgv.co.kr%2Fcgvpomscontent%2Fstatic%2Fpublic%2Fimages%2Fmco%2Flogo%2Flogo_06_white.png&w=256&q=75"
+                                    alt=""><span>3D 차세대 몰입형 사운드</span></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 프리미엄 상영관 -->
+                <div class="bookInfo_wrap3">
+                    <div class="bookInfo_title3">프리미엄 상영관</div>
+                    <div class="bookInfo_content3">
+                        <div class="slides">
+                            <a href="" class="slide"><img
+                                    src="https://cgv.co.kr/_next/image?url=https%3A%2F%2Fcdn.cgv.co.kr%2Fcgvpomscontent%2Fstatic%2Fpublic%2Fimages%2Fmco%2Flogo%2Flogo_privatebox_white.png&w=256&q=75"
+                                    alt=""><span>박스형 프리미엄 상영관</span></a>
+                            <a href="" class="slide"><img
+                                    src="https://cgv.co.kr/_next/image?url=https%3A%2F%2Fcdn.cgv.co.kr%2Fcgvpomscontent%2Fstatic%2Fpublic%2Fimages%2Fmco%2Flogo%2Flogo_suitecinema_white.png&w=256&q=75"
+                                    alt=""><span>호텔형 프리미엄 상영관</span></a>
+                            <a href="" class="slide"><img
+                                    src="https://cgv.co.kr/_next/image?url=https%3A%2F%2Fcdn.cgv.co.kr%2Fcgvpomscontent%2Fstatic%2Fpublic%2Fimages%2Fmco%2Flogo%2Flogo_cinedechef_white.png&w=256&q=75"
+                                    alt=""><span>쉐프가 있는 영화관</span></a>
+                            <a href="" class="slide"><img
+                                    src="https://cgv.co.kr/_next/image?url=https%3A%2F%2Fcdn.cgv.co.kr%2Fcgvpomscontent%2Fstatic%2Fpublic%2Fimages%2Fmco%2Flogo%2Flogo_tempurcinema_white.png&w=384&q=75"
+                                    alt=""><span>리클라이닝 침대 상영관</span></a>
+                            <a href="" class="slide"><img
+                                    src="https://cgv.co.kr/_next/image?url=https%3A%2F%2Fcdn.cgv.co.kr%2Fcgvpomscontent%2Fstatic%2Fpublic%2Fimages%2Fmco%2Flogo%2Flogo_goldclass_white.png&w=384&q=75"
+                                    alt=""><span>프리미엄 소파 상영관</span></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 테마컨셉 상영관 -->
+                <div class="bookInfo_wrap3">
+                    <div class="bookInfo_title3">테마컨셉 상영관</div>
+                    <div class="bookInfo_content3">
+                        <div class="slides">
+                            <a href="" class="slide"><img
+                                    src="https://cgv.co.kr/_next/image?url=https%3A%2F%2Fcdn.cgv.co.kr%2Fcgvpomscontent%2Fstatic%2Fpublic%2Fimages%2Fmco%2Flogo%2Flogo_cineandforet_white.png&w=256&q=75"
+                                    alt=""><span>자연 컨셉의 힐링 상영관</span></a>
+                            <a href="" class="slide"><img
+                                    src="https://cgv.co.kr/_next/image?url=https%3A%2F%2Fcdn.cgv.co.kr%2Fcgvpomscontent%2Fstatic%2Fpublic%2Fimages%2Fmco%2Flogo%2Flogo_cineandlivingroom_white.png&w=384&q=75"
+                                    alt=""><span>신개념 소셜 상영관</span></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 액티비티 -->
+                <div class="activityArea">
+                    <div class="activity_wrap">
+                        <div class="activity_title1" style="padding: 30px 0 10px; border-top: 1px solid #444;">테마체험
+                        </div>
+                        <a href="" class="slide" style="margin-bottom: 30px;">
+                            <img src="./images/ticket/activityImg1.webp" alt="">
+                            <span class="activity_comment">극장에서 즐기는 신개념 미션 체험</span>
+                            <span class="mapimg"><img src="./images/ticket/movieBook_theater.png"
+                                    alt="">미션브레이크 용산아이파크몰</span>
+                        </a>
+                        <a href="" class="slide">
+                            <img src="./images/ticket/activityImg2.webp" alt="">
+                            <span class="activity_comment">남녀노소 즐기는 신개념 미션 체험</span>
+                            <span class="mapimg"><img src="./images/ticket/movieBook_theater.png"
+                                    alt="">볼링펍 수유</span>
+                        </a>
+                    </div>
+                    <div class="activity_wrap">
+                        <div class="activity_title1" style="padding-bottom: 10px;">씨네드쉐프 레스토랑 예약</div>
+                        <a href="" class="slide">
+                            <img src="./images/ticket/activityImg3.webp" alt="">
+                            <span class="activity_comment">만찬과 함께하는 영화의 즐거움</span>
+                            <span class="mapimg"><img src="./images/ticket/movieBook_theater.png"
+                                    alt="">씨네드쉐프 센텀</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        window.addEventListener('scroll', () => {
+            const movieBtn = document.getElementById('tab-movie');
+            const activityBtn = document.getElementById('tab-activity');
+
+            // 여기에 스크롤 기준값을 지정 (예: 300px)
+            const scrollThreshold = 300;
+
+            if (window.scrollY >= scrollThreshold) {
+                // 스크롤 내려가면 '액티비티' 강조, '영화'는 비활성
+                movieBtn.classList.remove('active');
+                activityBtn.classList.add('active');
+            } else {
+                // 위로 올라오면 '영화' 강조, '액티비티' 비활성
+                movieBtn.classList.add('active');
+                activityBtn.classList.remove('active');
+            }
+        });
+
+    </script>
+</body>
+
+</html>

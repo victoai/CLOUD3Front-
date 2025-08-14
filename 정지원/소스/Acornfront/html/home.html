@@ -1,0 +1,218 @@
+<!-- home.html -->
+<link rel="stylesheet" href="./css/home.css?202050808">
+
+<section class="home_page">
+
+  <!-- ✅ 상단 메뉴: 영화 / 이벤트 / 엑티비티 -->
+  <div class="home_menu">
+    <ul>
+      <li><div class="home_menu_li active" data-icon="🎬">영화</div></li>
+      <li><div class="home_menu_li" data-icon="🎉">이벤트/혜택</div></li>
+      <li><div class="home_menu_li" data-icon="🏃‍♂️">엑티비티</div></li>
+    </ul>
+  </div>
+
+  <!-- ✅ 영화 탭 콘텐츠 -->
+  <div class="movie_sub">
+    <div class="movie_sub_first">
+
+      <!-- 🎞️ 서브 메뉴 (무비차트 / 현재상영작 / ICECON) -->
+      <div class="movie_sub_first_menu">
+
+        <!-- 앞쪽 메뉴 리스트 -->
+        <ul class="movie_sub_first_menu_front">
+          <li><div class="movie_sub_first_menu_front_li underline-middle active">무비차트</div></li>
+          <li><div class="movie_sub_first_menu_front_li underline-middle">현재상영작</div></li>
+          <li><div class="movie_sub_first_menu_front_li underline-middle">ICECON</div></li>
+        </ul>
+
+        <!-- 전체보기 링크 -->
+        <ul class="movie_sub_first_menu_back">
+          <li>
+            <a href="#">전체보기
+              <svg width="14" height="14" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 4.57812L16 12.5781L8 20.5781" stroke="#707070" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 🎞️ 무비 그리드 영역 -->
+      <div class="movie_chart">
+
+        <div class="movie_grid">
+          <div class="movie_grid_main"></div>
+        </div>
+
+        <!-- 🔍 검색 영역 -->
+        <div class="anything_search">
+          <div class="search_wrap">
+            <p><a href="#">찾고계신가요? &#10095;</a></p>
+            <div class="search_wrap_input">
+              <input type="text" placeholder="찾으시는 영화, 서비스를 입력해주세요.">
+              <div class="search_button"></div>
+            </div>
+          </div>
+
+          <!-- 🔗 바로가기 링크 -->
+          <div class="short_cut">
+            <ul>
+              <li>팝콘주문</li>
+              <li>vip라운지</li>
+              <li>경품이벤트</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 📸 포토플레이 광고 -->
+        <div class="photo_banner">
+          <div class="photo_text">
+            <p class="small_text">이제 누구나! 영화를 안봐도</p>
+            <p class="main_text">포토플레이 출력 가능!</p>
+            <button>바로가기</button>
+          </div>
+          <img src="./images/home/character.png" alt="포토플레이 캐릭터">
+        </div>
+
+        <!-- 🗣️ 빙그레 광복 광고 -->
+        <div class="liberation-card">
+          <div class="liberation-header">
+            <p class="liberation-title">처음 듣는 광복</p>
+            <span class="liberation-badge">AD</span>
+          </div>
+
+          <p class="liberation-quote">“그 함성소리가 천둥번개 치는 소리보다 더 했대요”</p>
+
+          <p class="liberation-desc">
+            눈으로만 기억하던 80년 전 광복의 날.<br>
+            빙그레가 광복 당시의 역사 자료와 증언을 토대로<br>
+            그날의 소리를 구현했습니다.<br><br>
+            독립운동가들이 그토록 듣고 싶어했던 “대한독립만세”,<br>
+            CGV에서 다시 울립니다.
+          </p>
+
+          <div class="liberation-image">
+            <img src="./images/home/ad_L.png" alt="처음 듣는 광복 포스터">
+          </div>
+
+          <div class="liberation-footer">
+            <img class="footer-icon" src="./images/home/ad_S.png" alt="예매하러가기">
+            <div class="footer-text">
+              <strong>예매하러 가기</strong><br>
+              가장 가까운 상영관을 찾아보세요
+            </div>
+            <div class="footer-arrow">❯</div>
+          </div>
+        </div>
+
+        <!-- 🎬 ICECON 슬라이더 -->
+        <div class="ICECON_movie_grid_main">
+          <div class="ICECON_movie_grid_prev">&#10094;</div>
+          <div class="ICECON_movie_slider"></div>
+          <div class="ICECON_movie_grid_next">&#10095;</div>
+        </div>
+
+        <!-- 📷 인스타 피드 (TagEmbed 위젯) -->
+        <div class="tagembed-widget" style="width:400px;height:100%;overflow:auto;margin: 30px auto;" data-widget-id="295613" website="1"></div>
+        <script src="https://widget.tagembed.com/embed.min.js" type="text/javascript"></script>
+
+      </div> <!-- movie_chart 끝 -->
+    </div>
+  </div>
+
+  <!-- 🎁 이벤트 탭 -->
+  <div class="event">
+    <div class="event_container">
+
+      <!-- 이벤트 슬라이더 화살표 -->
+      <button class="event_arrow event_arrow_left">&lt;</button>
+
+      <div class="event_slider_wrapper">
+        <div class="event_slider"></div>
+      </div>
+
+      <button class="event_arrow event_arrow_right">&gt;</button>
+    </div>
+
+    <!-- 📌 이벤트 퀵메뉴 -->
+    <div class="menu-container">
+      <div class="menu-item">
+        <div class="menu-icon">
+          <img src="./images/home/event_icon1.png" alt="클럽서비스">
+        </div>
+        <div class="menu-label">클럽서비스</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon">
+          <img src="./images/home/event_icon2.png" alt="할인정보">
+        </div>
+        <div class="menu-label">할인정보</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon">
+          <img src="./images/home/event_icon3.png" alt="경품현황">
+        </div>
+        <div class="menu-label">경품현황</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon">
+          <img src="./images/home/event_icon4.png" alt="당첨확인">
+        </div>
+        <div class="menu-label">당첨확인</div>
+      </div>
+    </div>
+
+    <!-- 🔖 이벤트 리스트 -->
+    <p class="event_title_list">진행중인 이벤트</p>
+    <div class="event_container_list">
+      <div class="event_grid_list"></div>
+    </div>
+  </div>
+
+  <!-- 🎯 액티비티 탭 -->
+  <div class="activity">
+
+    <!-- 포토플레이 광고 4개 반복 -->
+    <div class="photo_banner">
+      <div class="photo_text">
+        <p class="small_text">이제 누구나! 영화를 안봐도</p>
+        <p class="main_text">포토플레이 출력 가능!</p>
+        <button>바로가기</button>
+      </div>
+      <img src="./images/home/character.png" alt="포토플레이 캐릭터">
+    </div>
+
+    <div class="photo_banner">
+      <div class="photo_text">
+        <p class="small_text">이제 누구나! 영화를 안봐도</p>
+        <p class="main_text">포토플레이 출력 가능!</p>
+        <button>바로가기</button>
+      </div>
+      <img src="./images/home/character.png" alt="포토플레이 캐릭터">
+    </div>
+
+    <div class="photo_banner">
+      <div class="photo_text">
+        <p class="small_text">이제 누구나! 영화를 안봐도</p>
+        <p class="main_text">포토플레이 출력 가능!</p>
+        <button>바로가기</button>
+      </div>
+      <img src="./images/home/character.png" alt="포토플레이 캐릭터">
+    </div>
+
+    <div class="photo_banner">
+      <div class="photo_text">
+        <p class="small_text">이제 누구나! 영화를 안봐도</p>
+        <p class="main_text">포토플레이 출력 가능!</p>
+        <button>바로가기</button>
+      </div>
+      <img src="./images/home/character.png" alt="포토플레이 캐릭터">
+    </div>
+
+  </div>
+</section>
+
+<!-- 📜 스크립트 연결 -->
+<script src="./js/home.js?20250808"></script>
+
