@@ -1,0 +1,650 @@
+/*header*/
+* {
+  box-sizing: border-box;
+}
+.container {
+  max-width: calc(100% - 40px);
+  margin: 0 auto;
+  position: relative;
+ 
+  position: sticky; 
+  top: 0;
+  z-index: 9999;
+  overflow: visible;
+ 
+}
+
+header {
+  background: #f6f5ef;
+}
+
+.topbar {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header_logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  margin-left: 150px;
+  padding: 5px;
+}
+
+.header_logo img {
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+  object-fit: contain;
+  display: block;
+}
+
+.sub-menu {
+  display: flex;
+  align-items: center;
+padding: 10px;
+margin-right: 15%;
+}
+
+.sub-menu ul.menu {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sub-menu ul.menu li {
+  position: relative;
+  font-size: 12px;
+  color: #555555;
+  padding: 0 12px;
+}
+
+.contents_menu li:nth-child(1) {
+  margin-top: 20px;
+}
+.sub-menu ul.menu li + li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 12px;
+  background: #ccc;
+}
+
+.sub-menu ul.menu li a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  padding: 10px 0;
+}
+.sub-menu ul.menu li a:hover {
+  text-decoration: underline;
+}
+
+.contents_menu li a{
+  color: #999;
+  text-decoration: none;
+}
+.contents_menu li a:hover{
+  color: #999;
+  text-decoration:  underline;
+}
+
+.sub-menu .search {
+  position: relative;
+  height: 34px;
+  display: flex;
+  align-items: center;
+}
+
+.sub-menu .search input {
+  width: 30px;
+  height: 34px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  padding: 0 25px 0 10px;
+  color: #777;
+  background: #fff;
+  transition: width 0.4s;
+}
+
+.sub-menu .search input:focus {
+  width: 190px; /* expand on focus */
+  border-color: #777;
+}
+
+.sub-menu .search img {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.4s;
+ cursor: pointer;
+}
+
+
+nav .inner {
+  height: 54px;
+  display: flex;
+  align-items: flex-end;
+  margin-right: 0;
+ 
+}
+
+.menubar {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0 auto;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+ 
+}
+
+.menu1 { 
+   height: 54px; 
+  position: relative; }
+
+.menu1 .item_name {
+    padding: 0 10px;
+     line-height: 54px; 
+  font-size: 14px;
+}
+
+.menu1 a {
+  color: #333;
+  text-decoration: none;
+}
+
+.menu1 a:hover {
+  color: #00b050;
+  text-decoration: underline;
+}
+
+.menu1 .item_contents {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  /*top: 134px;  헤더 높이에 맞게 조정 */
+  height: 320px;
+  background: #2c2a29;
+  border-top: 1px solid #393939;
+  box-shadow: 0 8px 16px rgba(0,0,0,.25);
+   z-index: 9999;
+
+  visibility: hidden;
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.6s ease, opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.menu1:hover .item_contents {
+  opacity: 1;
+  visibility: visible;
+ clip-path: inset(0 0 0 0);
+  transition-delay: 0s;
+  pointer-events: auto;
+}
+
+.menu1 .item_contents .contents_menu {
+  height: 100%;
+  background: #333;
+  background: transparent;
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  text-align: left;
+  justify-content: center;
+   gap: 80px; 
+    margin-top: 0;
+  padding-top: 0;
+}
+
+.contents_menu ul {
+  list-style: none;
+  padding: 0;
+ padding-top: 20px;
+  font-size: 13px;
+   font-weight: 400; 
+  
+}
+
+.contents_menu li {
+  color:#999;
+  font-size: 12px;
+  margin-top: 5px;
+  font-weight: 400;
+}
+
+.contents_menu li:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.item_name:hover {
+  background-color: #333;
+}
+  
+  
+  /*login*/
+  
+  .login {
+            height: 850px;
+            background-image: url("../images/로그인이미지.jpg");
+            background-position: center;
+            background-size: cover;
+           
+        }
+.login_t{
+    height: 600px;
+   padding: 100px;
+  margin: 0 auto;
+
+}
+
+     .login h2 {
+            width: 100px;
+            margin: 0 auto;
+            font-size: 26px;
+            text-align: center;
+            height: 50px;
+            color: whitesmoke;
+
+        }
+
+        .login_wrap {
+            background-color: white;
+            width: 600px;
+            height: 500px;
+            border: 0.5px solid gray;
+            border-radius: 3px;
+            margin: 0 auto;
+        }
+
+        .p1 {
+            height: 80px;
+
+            text-align: center;
+            font-size: 18px;
+            color: rgb(87, 79, 79);
+            border: 0.1px solid gray;
+           border-top-left-radius: 3px;
+           border-top-right-radius: 3px;
+
+        }
+
+        .p1 span {
+            color: #006633;
+        }
+
+
+
+        .login_info {
+            height: 230px;
+            margin-top: 10px;
+            padding: 10px;
+
+
+        }
+
+        .login_info input {
+            width: 100%;
+            height: 45px;
+            border-radius: 3px;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-top: 10px;
+            color: gray;
+            border: 0.4px solid gray;
+        }
+
+        .login_info button {
+            width: 100%;
+            height: 65px;
+            padding: 10px;
+            text-align: center;
+            background-color: #006633;
+            color: whitesmoke;
+            font-size: 25px;
+            border-style: none;
+            border-radius: 3px;
+            cursor: pointer;
+            
+        }
+.login_info button:hover{
+text-decoration: underline;}
+
+
+
+        .save {
+            display: flex;
+
+            background-size: center;
+
+        }
+
+        .save input {
+            width: 25px;
+            height: 25px;
+            background-image: url("../images/check.png");
+        }
+
+
+
+        .p2 {
+            height: 100px;
+            font-size: 14.5px;
+            color: #006633;
+            width: 95%;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .login_f {
+            height: 40px;
+            cursor: pointer;
+            
+        }
+
+.login_f li:hover{
+    text-decoration: underline;
+}
+
+        .login_f ul {
+            display: flex;
+            list-style: none;
+
+        }
+
+        .login_f li {
+            width: 33.3%;
+            color: rgb(87, 79, 79);
+            font-size: 16px;
+
+        }
+.login_f a{
+ color: rgb(87, 79, 79);  
+ text-decoration: none;
+}
+
+
+/* 체크박스 기본 숨김 */
+.check input[type="checkbox"] {
+  display: none;
+}
+
+/* 라벨 스타일 - 회색 배경 */
+.check label {
+  display: inline-block;
+  padding-left: 28px; /* 아이콘 공간 */
+  background: url("../images/check.png") no-repeat left center; /* 회색 체크 아이콘 */
+  background-size: 20px 20px;
+  cursor: pointer;
+  line-height: 20px;
+}
+
+/* 체크된 상태 - 초록 배경 */
+.check input[type="checkbox"]:checked + label {
+  background-image: url("../images/check2.png"); /* 초록 체크 아이콘 */
+}
+
+.check{
+  padding-bottom: 10px;
+  padding-top: 10px;
+  color: #3F4141 ;
+    
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+/*footer*/
+
+
+footer {
+  height: auto;
+  border: 1px solid black;
+  background-color: #2e2c2c;
+  position: relative;
+  font-family: "nbg", "맑은 고딕", Sans-serif, Helvetica;
+ 
+}
+
+.footer-inner {
+  width: 100%;   /* 원하는 고정 폭 */
+
+}
+
+.fo_1_ul,
+.fo_3 {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+.fo_1_ul ul,
+.fo_3 .aside {
+    flex-wrap: wrap; /* 줄바꿈 허용 */
+}
+
+
+
+
+.fo_1 {
+  height: auto;
+   display: contents; 
+ 
+  justify-content:flex-start;          
+  align-items: flex-start;
+  gap: 150px;                         /* 메뉴 간 간격 */
+  background-color: #2c2a29;         /* 스타벅스 톤 */
+  padding: 30px 0;                   /* 위아래 여백 */
+
+  border-bottom: 1px solid #393939;  /* 아래 구분선 */
+
+
+
+}
+
+
+.fo_1_ul {
+ display: contents;
+ display: flex;
+  flex-wrap: wrap;       /* 줄바꿈 허용 */
+  max-width: 1250px;         /* 고정 폭 */
+  gap: 100px;             /* 메뉴 간 간격 (단위 수정) */
+  margin: 0 auto; 
+ align-items: flex-start;
+padding-top: 50px;
+padding-bottom: 30px;
+
+
+ justify-content: space-between; /* 좌측 메뉴, 우측 로고 양끝 배치 */
+ 
+}
+
+.fo_1 img {
+  margin-left: auto;    /* 라인 미세조정 */
+}
+
+.fo_1 ul {
+  list-style: none;
+  color: #ffffff;
+  font-size: 14px;     /* 타이틀 글씨 크기 */
+  font-weight: bold;   /* 타이틀 굵게 */
+  margin: 0;
+  padding: 0;
+}
+
+.fo_1 li {
+  font-size: 12px;     /* 항목 글씨 크기 */
+  font-weight: normal; /* 항목은 기본 굵기 */
+  color: #ffffff;
+  line-height: 1.8;
+}
+.fo_1 li:hover {
+  text-decoration: underline;
+}
+
+
+.fo_2 {
+  height: 100px;
+  background-color: #282828;
+  display: flex;
+    /* 스타벅스 페이지 폭 */
+ 
+}
+
+.fo_2 ul {
+
+ width: 95%;
+ align-items: center;
+   margin: 0 auto;
+     justify-content: center;
+      gap: 10px; 
+       padding:15px 0;
+  list-style: none;
+  border: none;
+ display: flex;
+}
+
+.fo_2.inner {
+  height: 1180px;
+  width: 120px;
+}
+
+.fo_3 {
+  height: auto;
+  padding: 20px 0;
+   padding-bottom: 10px;
+  background-color: #363333;
+  color: #ffffff;
+   /* 스타벅스 페이지 폭 */
+ 
+ 
+}
+
+.aside {
+  list-style: none;
+  display: flex;
+   flex-wrap: nowrap;
+  margin: 0 auto;
+  font-size: 10px;
+  height: 32px;
+  position: static;
+max-width: 1250px;
+gap: 7px;
+  padding: 0;
+  justify-content: flex-start;
+  white-space: nowrap;
+
+}
+
+.fo_3 a {
+  color: #ffffff;
+  text-decoration: none;
+   font-size: 12px;
+}
+
+.fo_3 a:hover {
+  text-decoration: underline;
+}
+
+.aside a {
+ padding: 0 6px;
+}
+
+.aside .a1 {
+  color: #00b050;
+  font-weight: bolder;
+}
+
+.fo_3 button {
+  height: 35px;
+  width: 110px;
+  border: 2px solid whitesmoke;
+  border-radius: 3px;
+  background-color: #363333;
+  text-align: center;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.fo_3 .btn {
+  width: auto;
+
+  margin: 12px auto 0;
+  padding: 0;
+  text-align: center;
+}
+.aside.inner {
+  height: 30px;
+
+}
+
+.fo_4 {
+  height: 100px;
+  font-size: 12px;
+text-align: center;
+  padding: 15px 0;
+  background-color: #363333;
+}
+
+.fo_4.inner {
+  height: 1020px;
+  width: 60px;
+}
+
+.fo_4 ul {
+  list-style: none;
+  display: flex;
+  color: rgb(170, 162, 162);
+  width: 100%;
+   justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 0 auto 30px;
+
+}
+
+.fo_4_1 {
+  width: 180px;
+}
+
+.fo_4_2 {
+  width: 270px;
+}
+
+.fo_4_3 {
+  width: 100px;
+}
+
+.fo_4_4 {
+  width: 180px;
+}
+
+.fo_4 p {
+  text-align: center;
+  color: rgb(170, 162, 162);
+}
+
+
+
+
+
+
+

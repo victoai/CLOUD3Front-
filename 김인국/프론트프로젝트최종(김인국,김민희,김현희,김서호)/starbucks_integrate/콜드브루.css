@@ -1,0 +1,295 @@
+/* body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+           justify-content: center;
+        }*/
+
+.wrap {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.lab {
+  text-align: justify;
+  font-size: 0;
+  width: 80%;
+  height: 100%;
+}
+
+.header_wrap {
+  border: 1px solid black;
+  padding: 10px;
+  width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.list_line1,
+.list_line2,
+.list_line3,
+.list_line4 {
+  width: 1600px;
+  margin: 0 auto;
+  background-color: #ecebeb;
+  display: block;
+  /* inline-block → block으로 */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.lab > * {
+  display: inline-block;
+  font-size: 16px;
+  vertical-align: middle;
+  padding: 20px;
+}
+
+.content_title {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border: none;
+}
+
+.justify-fix {
+  display: inline-block;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 20px;
+  /* 세로 간격 0, 가로 간격 20px */
+  align-items: center;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  /* 체크박스와 글자 수직 중앙 */
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin: 0 5px 0 0;
+  /* 오른쪽 5px 여백만 */
+}
+
+.list {
+  display: flex;
+  gap: 8px;
+  padding: 12px 20px;
+}
+
+.list button {
+  background-color: #006633;
+  margin: 10px 20px;
+  padding: 10px 15px;
+
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+
+  background-color: #f7f7f7;
+  color: #222;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.list button.active {
+  background-color: #006633;
+  color: #fff;
+  border: none;
+}
+
+F form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding: 0 20px 16px;
+  align-items: center;
+  /* 체크박스와 글자 높이 맞춤 */
+}
+
+form label {
+  display: inline-block;
+  cursor: pointer;
+  align-items: center;
+  /* 체크박스와 글자 수직 가운데 */
+  font-size: 14px;
+  margin-left: 20px;
+  padding: 20px;
+  color: #444;
+}
+
+form input[type="checkbox"] {
+  margin-right: 0 6px 0 0;
+}
+
+.content-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+
+.one {
+  border: 1px solid black;
+}
+
+.two {
+  border: 1px solid black;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+.u {
+  width: 1200px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  /*  border:1px solid black;  */
+  margin: 0 auto;
+}
+
+.u li {
+  text-align: center;
+  /*border:0.5px solid rgb(196, 186, 186);*/
+  padding: 20px;
+}
+
+.avv {
+  width: 250px;
+  height: 250px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.avv img {
+  width: 250px;
+  height: 250px;
+  transform-origin: center;
+  position: relative;
+  display: block;
+}
+
+.u li img:hover {
+  transform: scale(1.2);
+  transition: 1s;
+  overflow: hidden;
+}
+
+.list_line1 {
+  width: 100%;
+  height: 100%;
+
+  background-color: #ecebeb;
+  display: inline-block;
+}
+
+.list_line2 {
+  width: 100%;
+  height: 100%;
+
+  background-color: #ecebeb;
+  display: inline-block;
+}
+
+.list_line3 {
+  width: 100%;
+  height: 100%;
+
+  background-color: #ecebeb;
+  display: inline-block;
+}
+
+.list_line4 {
+  width: 100%;
+  height: 100%;
+
+  background-color: #ecebeb;
+  display: inline-block;
+}
+
+/* 전체 오른쪽 정렬 */
+.filter-section {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0;
+  margin-right: 30px;
+}
+
+/* 드롭다운 버튼 스타일 */
+.dropdown-toggle {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* 옵션 박스 (처음엔 숨김) */
+.dropdown-options {
+  display: none;
+  position: absolute;
+  right: 0;
+  margin-top: 5px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 1000;
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-options label {
+  display: block;
+  margin: 8px 0;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.icon.new {
+  color: #d33;
+  font-weight: bold;
+}
+
+.icon.seasonal {
+  color: #006633;
+  font-weight: bold;
+}
+
+.icon.new {
+  color: #d33;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.icon.seasonal {
+  color: #006633;
+  font-weight: bold;
+  margin-right: 5px;
+}

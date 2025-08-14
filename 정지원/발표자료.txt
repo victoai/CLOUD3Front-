@@ -1,0 +1,7 @@
+4조 
+설계
+https://docs.google.com/presentation/d/1TQCJGHlIoHkF7o6qV6LAsraqDMkUDGSZofBftgQUY4I/edit?usp=sharing 
+발표
+https://docs.google.com/presentation/d/165xFTa09p5LnjFEXX-m_pkVu6_hDXQoOvtgwvWYnXGM/edit?usp=sharing 
+ 소스
+git pull https://github.com/stopcircle/Acorn-frontproject.git
